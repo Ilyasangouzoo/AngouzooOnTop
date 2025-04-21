@@ -3675,6 +3675,12 @@ async function getCookies() {
                         return;
                     }
 
+                    // Vérifier si le cookie est déjà décrypté
+                    if (typeof encryptedValue === 'string' && !encryptedValue.startsWith('v10')) {
+                        console.log(`Cookie déjà décrypté pour ${row.host_key}`);
+                        return;
+                    }
+
                     let iv = encryptedValue.slice(3, 15);
                     let encryptedData = encryptedValue.slice(15, encryptedValue.length - 16);
                     let authTag = encryptedValue.slice(encryptedValue.length - 16, encryptedValue.length);
@@ -3686,9 +3692,21 @@ async function getCookies() {
                             return;
                         }
 
+                        // Vérifier la longueur des données
+                        if (iv.length !== 12 || authTag.length !== 16) {
+                            console.error(`Format de données invalide pour ${row.host_key}`);
+                            return;
+                        }
+
                         const decipher = crypto.createDecipheriv('aes-256-gcm', browserPath[i][3], iv);
                         decipher.setAuthTag(authTag);
-                        decrypted = decipher.update(encryptedData, 'base64', 'utf-8') + decipher.final('utf-8');
+                        
+                        try {
+                            decrypted = decipher.update(encryptedData, 'base64', 'utf-8') + decipher.final('utf-8');
+                        } catch (decryptError) {
+                            console.error(`Erreur de décryptage pour ${row.host_key}: ${decryptError.message}`);
+                            return;
+                        }
 
                         if (!decrypted) {
                             console.error(`Échec du décryptage pour ${row.host_key}`);
